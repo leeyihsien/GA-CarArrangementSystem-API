@@ -6,6 +6,7 @@ using GA_CarArrangementSystem_API.Models;
 using GA_CarArrangementSystem_API;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using GA_CarArrangementSystem_API.DTO;
 
 namespace GA_CarArrangementSystem_API.Data
 {
@@ -13,11 +14,17 @@ namespace GA_CarArrangementSystem_API.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<ArrangementInfo> ArrangementInfo { get; set; } 
+        public DbSet<ArrangementInfo> ArrangementInfo { get; set; }
+        public DbSet<ArrangementInfoDTO> ArrangementInfoDTO { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ArrangementInfo>().HasKey(x => x.ArrangementId);
+            modelBuilder.Entity<ArrangementInfoDTO>(entity =>
+            {
+                entity.HasNoKey();
+            });
+            
         }
     }
 }

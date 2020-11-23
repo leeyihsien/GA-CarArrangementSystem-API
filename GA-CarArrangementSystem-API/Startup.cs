@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using GA_CarArrangementSystem_API.Data;
+using GA_CarArrangementSystem_API.DTO;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace GA_CarArrangementSystem_API
