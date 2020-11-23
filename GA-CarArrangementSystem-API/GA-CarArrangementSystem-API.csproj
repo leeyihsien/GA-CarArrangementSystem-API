@@ -24,14 +24,5 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="_Repostories\Interface\" />
-    <Folder Include="_Repostories\Repositories\" />
-    <Folder Include="_Services\Interface\" />
-    <Folder Include="_Services\Services\" />
-  </ItemGroup>
-
 
 </Project>

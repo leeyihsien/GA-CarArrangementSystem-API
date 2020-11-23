@@ -7,5 +7,6 @@ namespace GA_CarArrangementSystem_API.ViewModels
 {
     public class ArrangementInfoViewModel
     {
+
     }
 }

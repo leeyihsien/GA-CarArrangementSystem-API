@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using GA_CarArrangementSystem_API.Data;
 using GA_CarArrangementSystem_API.DTO;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using AutoMapper;
 
 namespace GA_CarArrangementSystem_API
 {
@@ -32,6 +33,9 @@ namespace GA_CarArrangementSystem_API
             services.AddCors();
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            
+            //register automapper 
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

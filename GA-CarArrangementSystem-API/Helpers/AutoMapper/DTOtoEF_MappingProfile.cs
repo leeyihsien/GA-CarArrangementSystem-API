@@ -10,6 +10,9 @@ namespace GA_CarArrangementSystem_API.Helpers.AutoMapper
 {
     public class DTOtoEF_MappingProfile : Profile
     {
+        /// <summary>
+        /// 建立各個從 DTO 轉換到 model 的mapper 
+        /// </summary>
 
         public DTOtoEF_MappingProfile()
         {
