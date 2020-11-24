@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using GA_CarArrangementSystem_API.Helpers.AutoMapper;
 
 namespace GA_CarArrangementSystem_API.Helpers.AutoMapper
 {
@@ -13,13 +14,13 @@ namespace GA_CarArrangementSystem_API.Helpers.AutoMapper
     /// </summary>
     public class AutoMapperConfig
     {
-        public static MapperConfiguration RegisterMapping()
+        public static MapperConfiguration RegisterMappings()
         {
             return new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new EFtoDTO_MappingProfile());
                 cfg.AddProfile(new DTOtoEF_MappingProfile());
-                cfg.AddProfile(new ViewModel_MappingProfile());
+               // cfg.AddProfile(new ViewModel_MappingProfile());
             });
         }
     }

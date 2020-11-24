@@ -155,3 +155,5 @@ D:\SourceCode\GA-CarArrangementSystem\GA-CarArrangementSystem-API\GA-CarArrangem
 D:\SourceCode\GA-CarArrangementSystem\GA-CarArrangementSystem-API\GA-CarArrangementSystem-API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 D:\SourceCode\GA-CarArrangementSystem\GA-CarArrangementSystem-API\GA-CarArrangementSystem-API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 D:\SourceCode\GA-CarArrangementSystem\GA-CarArrangementSystem-API\GA-CarArrangementSystem-API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\SourceCode\GA-CarArrangementSystem\GA-CarArrangementSystem-API\GA-CarArrangementSystem-API\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+D:\SourceCode\GA-CarArrangementSystem\GA-CarArrangementSystem-API\GA-CarArrangementSystem-API\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll

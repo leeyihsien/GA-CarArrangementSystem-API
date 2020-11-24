@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "UvXyAweL7v1LOWEmFCc8y/0KMAybcrXt95IdQGtjcYjbIou4GpSMiFrJkNHNKsEDh8ljpAh7bzCRdQMvwGq0rg==",
+  "dgSpecHash": "/8/gsZoulDuiGQ89yeSSLjokzDiYuLpriP9lZGZY3Q/AbMx5c0fo6pDH4PQgZWSOljZbH/0RpIviV0mYYxvaUg==",
   "success": true,
   "projectFilePath": "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\eddy.lee\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\eddy.lee\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\eddy.lee\\.nuget\\packages\\documentformat.openxml\\2.11.3\\documentformat.openxml.2.11.3.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\linqkit.core\\1.1.21\\linqkit.core.1.1.21.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
@@ -127,6 +128,7 @@
     "C:\\Users\\eddy.lee\\.nuget\\packages\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\eddy.lee\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\eddy.lee\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",

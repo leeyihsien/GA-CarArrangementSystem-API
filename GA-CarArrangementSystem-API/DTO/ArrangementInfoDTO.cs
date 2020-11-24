@@ -30,5 +30,14 @@ namespace GA_CarArrangementSystem_API.DTO
         public string CarId { get; set; }
 
         public string DriverId { get; set; }
+
+        public string ArrangementStatus { get; set; }
+
+        public string ArrangementRemark { get; set; }
+
+        public ArrangementInfoDTO()
+        {
+            this.ArrangeDate = DateTime.Now;
+        }
     }
 }

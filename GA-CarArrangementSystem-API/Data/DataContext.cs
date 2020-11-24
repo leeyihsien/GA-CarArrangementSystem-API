@@ -15,7 +15,11 @@ namespace GA_CarArrangementSystem_API.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<ArrangementInfo> ArrangementInfo { get; set; }
-        public DbSet<ArrangementInfoDTO> ArrangementInfoDTO { get; set; }
+        public DbSet<CarInfo> CarInfo { get; set; }
+        public DbSet<DriverInfo> DriverInfo { get; set; }
+        public DbSet<RouteInfo> RouteInfo { get; set; }
+
+        public DbSet<CarDriver> CarDriver { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

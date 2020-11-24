@@ -15,5 +15,20 @@ namespace GA_CarArrangementSystem_API._Services.Interface
     public interface IArrangementInfoService : IGeneralService<ArrangementInfoDTO>
     {
         Task<List<ArrangementInfoDTO>> GetID();
+        Task<List<ArrangementInfoDTO>> GetStatus();
+
+        Task<List<ArrangementInfoDTO>> GetGoTime();
+
+        Task<List<ArrangementInfoDTO>> GetBackTime();
+
+        Task<List<ArrangementInfoDTO>> GetRouteId();
+
+        Task<List<ArrangementInfoDTO>> GetArrangeDate();
+
+        Task<List<ArrangementInfoDTO>> GetUserId();
+
+
+
+
     }
 }

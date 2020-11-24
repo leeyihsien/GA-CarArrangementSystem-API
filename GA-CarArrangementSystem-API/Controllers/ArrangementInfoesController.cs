@@ -8,7 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using GA_CarArrangementSystem_API.Data;
 using GA_CarArrangementSystem_API.Models;
 using GA_CarArrangementSystem_API.DTO;
-using GA_CarArrangementSystem_API._Repostories.Interface;
+using GA_CarArrangementSystem_API._Repositories.Interface;
+using GA_CarArrangementSystem_API._Repositories.Repositories;
+using GA_CarArrangementSystem_API._Services.Interface;
+using GA_CarArrangementSystem_API._Services.Services;
 
 /// <summary>
 /// 預設的controller 中具有 DbContext
@@ -22,134 +25,141 @@ namespace GA_CarArrangementSystem_API.Controllers
     [ApiController]
     public class ArrangementInfoesController : ControllerBase
     {
-        private readonly DataContext _context;        
+        private readonly IArrangementInfoService _arrangementInfoService;        
 
-        public ArrangementInfoesController(DataContext context)
+        public ArrangementInfoesController(IArrangementInfoService arrangementInfoService)
         {
-            
-            _context = context;
-            
-        }                        
 
-        // GET: api/ArrangementInfoes
+            _arrangementInfoService = arrangementInfoService;
+            
+        } 
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ArrangementInfoDTO>>> GetArrangmentInfo()
+        public async Task<IActionResult> GetID()
         {
-            return await _context.ArrangementInfo.Select(x => ArrangementInfoToDTO(x)).ToListAsync();
+            var model = await _arrangementInfoService.GetID();
+            return Ok(model);
         }
+
+    //   GET: api/ArrangementInfoes
+       //[HttpGet]
+       //public async Task<ActionResult<IEnumerable<ArrangementInfoDTO>>> GetArrangmentInfo()
+       // {
+       //    return await _arrangementInfoService.ArrangementInfo.Select(x => ArrangementInfoToDTO(x)).ToListAsync();
+       // }
 
         // GET: api/ArrangementInfoes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ArrangementInfoDTO>> GetArrangementInfo(string id)
-        {
-            var arrangementInfo = await _context.ArrangementInfo.FindAsync(id);
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<ArrangementInfoDTO>> GetArrangementInfo(string id)
+        //{
+        //    var arrangementInfo = await _arrangementInfoService.ArrangementInfo.FindAsync(id);
 
-            if (arrangementInfo == null)
-            {
-                return NotFound();
-            }
+        //    if (arrangementInfo == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return ArrangementInfoToDTO(arrangementInfo);
-        }
+        //    return ArrangementInfoToDTO(arrangementInfo);
+        //}
 
         // PUT: api/ArrangementInfoes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutArrangementInfo(string id, ArrangementInfoDTO arrangementInfoDTO)
-        {
-            if (id != arrangementInfoDTO.ArrangementId)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutArrangementInfo(string id, ArrangementInfoDTO arrangementInfoDTO)
+        //{
+        //    if (id != arrangementInfoDTO.ArrangementId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(arrangementInfoDTO).State = EntityState.Modified;
+        //    _arrangementInfoService.Entry(arrangementInfoDTO).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArrangementInfoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _arrangementInfoService.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!ArrangementInfoExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/ArrangementInfoes
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<ArrangementInfoDTO>> PostArrangementInfo(ArrangementInfoDTO arrangementInfoDTO)
-        {
-            var arrangementInfo = new ArrangementInfo
-            {
-                ArrangementId = arrangementInfoDTO.ArrangementId,
+        //[HttpPost]
+        //public async Task<ActionResult<ArrangementInfoDTO>> PostArrangementInfo(ArrangementInfoDTO arrangementInfoDTO)
+        //{
+        //    var arrangementInfo = new ArrangementInfo
+        //    {
+        //        ArrangementId = arrangementInfoDTO.ArrangementId,
 
-                ArrangeDate = arrangementInfoDTO.ArrangeDate,
+        //        ArrangeDate = arrangementInfoDTO.ArrangeDate,
 
-                UserId = arrangementInfoDTO.UserId,
+        //        UserId = arrangementInfoDTO.UserId,
 
-                UserName = arrangementInfoDTO.UserName,
+        //        UserName = arrangementInfoDTO.UserName,
 
-                RouteId = arrangementInfoDTO.RouteId,
+        //        RouteId = arrangementInfoDTO.RouteId,
 
-                GoTime = arrangementInfoDTO.GoTime,
+        //        GoTime = arrangementInfoDTO.GoTime,
 
-                BackTime = arrangementInfoDTO.BackTime,
+        //        BackTime = arrangementInfoDTO.BackTime,
 
-                CarId = arrangementInfoDTO.CarId,
+        //        CarId = arrangementInfoDTO.CarId,
 
-                DriverId = arrangementInfoDTO.DriverId
-            };
-            _context.ArrangementInfo.Add(arrangementInfo);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ArrangementInfoExists(arrangementInfo.ArrangementId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //        DriverId = arrangementInfoDTO.DriverId
+        //    };
+        //    _arrangementInfoService.ArrangementInfo.Add(arrangementInfo);
+        //    try
+        //    {
+        //        await _arrangementInfoService.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (ArrangementInfoExists(arrangementInfo.ArrangementId))
+        //        {
+        //            return Conflict();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtAction("GetArrangementInfo", new { id = arrangementInfo.ArrangementId }, ArrangementInfoToDTO(arrangementInfo));
-        }
+        //    return CreatedAtAction("GetArrangementInfo", new { id = arrangementInfo.ArrangementId }, ArrangementInfoToDTO(arrangementInfo));
+        //}
 
         // DELETE: api/ArrangementInfoes/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<ArrangementInfo>> DeleteArrangementInfo(string id)
-        {
-            var arrangementInfo = await _context.ArrangementInfo.FindAsync(id);
-            if (arrangementInfo == null)
-            {
-                return NotFound();
-            }
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult<ArrangementInfo>> DeleteArrangementInfo(string id)
+        //{
+        //    var arrangementInfo = await _context.ArrangementInfo.FindAsync(id);
+        //    if (arrangementInfo == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.ArrangementInfo.Remove(arrangementInfo);
-            await _context.SaveChangesAsync();
+        //    _context.ArrangementInfo.Remove(arrangementInfo);
+        //    await _context.SaveChangesAsync();
 
-            return arrangementInfo;
-        }
+        //    return arrangementInfo;
+        //}
 
-        private bool ArrangementInfoExists(string id)
-        {
-            return _context.ArrangementInfo.Any(e => e.ArrangementId == id);
-        }
+        //private bool ArrangementInfoExists(string id)
+        //{
+        //    return _context.ArrangementInfo.Any(e => e.ArrangementId == id);
+        //}
 
 
         /// <summary>
@@ -158,26 +168,26 @@ namespace GA_CarArrangementSystem_API.Controllers
         /// </summary>
         /// <param name="arrangementInfo"></param>
         /// <returns></returns>
-        private static ArrangementInfoDTO ArrangementInfoToDTO(ArrangementInfo arrangementInfo)
-            => new ArrangementInfoDTO
-            {
-                ArrangementId = arrangementInfo.ArrangementId,
+        //private static ArrangementInfoDTO ArrangementInfoToDTO(ArrangementInfo arrangementInfo)
+        //    => new ArrangementInfoDTO
+        //    {
+        //        ArrangementId = arrangementInfo.ArrangementId,
 
-                ArrangeDate = arrangementInfo.ArrangeDate,
+        //        ArrangeDate = arrangementInfo.ArrangeDate,
 
-                UserId = arrangementInfo.UserId,
+        //        UserId = arrangementInfo.UserId,
 
-                UserName = arrangementInfo.UserName,
+        //        UserName = arrangementInfo.UserName,
 
-                RouteId = arrangementInfo.RouteId,
+        //        RouteId = arrangementInfo.RouteId,
 
-                GoTime = arrangementInfo.GoTime,
+        //        GoTime = arrangementInfo.GoTime,
 
-                BackTime = arrangementInfo.BackTime,
+        //        BackTime = arrangementInfo.BackTime,
 
-                CarId = arrangementInfo.CarId,
+        //        CarId = arrangementInfo.CarId,
 
-                DriverId = arrangementInfo.DriverId
-            };
+        //        DriverId = arrangementInfo.DriverId
+        //    };
     }
 }

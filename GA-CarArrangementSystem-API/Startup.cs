@@ -13,8 +13,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using GA_CarArrangementSystem_API.Data;
 using GA_CarArrangementSystem_API.DTO;
+using GA_CarArrangementSystem_API._Repositories.Interface;
+using GA_CarArrangementSystem_API._Repositories.Repositories;
+using GA_CarArrangementSystem_API._Services.Interface;
+using GA_CarArrangementSystem_API._Services.Services;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using AutoMapper;
+using GA_CarArrangementSystem_API.Helpers.AutoMapper;
 
 namespace GA_CarArrangementSystem_API
 {
@@ -32,10 +37,29 @@ namespace GA_CarArrangementSystem_API
         {
             services.AddCors();
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
             services.AddControllers();
-            
+
             //register automapper 
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IMapper>(sp => {
+                return new Mapper(AutoMapperConfig.RegisterMappings());
+            });
+            services.AddSingleton(AutoMapperConfig.RegisterMappings());
+
+
+
+            //Repository DI
+            services.AddScoped<IArrangementInfoRepository, ArrangementInfoRepository>();
+            services.AddScoped<ICarInfoRepository, CarInfoRepository>();
+            services.AddScoped<IRouteInfoRepository, RouteInfoRepository>();
+            services.AddScoped<IDriverInfoRepository, DriverInfoRepository>();
+            services.AddScoped<ICarDriverRepository, CarDriverRepository>();
+
+
+            // Service 
+            services.AddScoped<IArrangementInfoService, ArrangementInfoService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
