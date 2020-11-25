@@ -32,8 +32,8 @@ namespace GA_CarArrangementSystem_API.Controllers
 
             _arrangementInfoService = arrangementInfoService;
             
-        } 
-        
+        }
+        //   GET: api/ArrangementInfoes
         [HttpGet]
         public async Task<IActionResult> GetID()
         {
