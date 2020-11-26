@@ -30,5 +30,7 @@ namespace GA_CarArrangementSystem_API.Models
         public string ArrangementStatus { get; set; }
 
         public string ArrangementRemark { get; set; }
+
+        public DateTime UpdateAt { get; set; }
     }
 }

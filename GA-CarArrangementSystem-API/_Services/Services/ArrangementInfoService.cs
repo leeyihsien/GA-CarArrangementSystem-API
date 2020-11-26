@@ -57,20 +57,20 @@ namespace GA_CarArrangementSystem_API._Services.Services
         /// <returns></returns>
         public async Task<List<ArrangementInfoDTO>> GetAllAsync()
         {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderBy(x => x.ArrangementId).ToListAsync();
         }
 
-        public async Task<List<ArrangementInfoDTO>> GetArrangeDate()
-        {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+        //public async Task<List<ArrangementInfoDTO>> GetArrangeDate()
+        //{
+        //    return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
 
-        }
+        //}
 
-        public async Task<List<ArrangementInfoDTO>> GetBackTime()
-        {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+        //public async Task<List<ArrangementInfoDTO>> GetBackTime()
+        //{
+        //    return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
 
-        }
+        //}
 
 
         /// <summary>
@@ -84,43 +84,48 @@ namespace GA_CarArrangementSystem_API._Services.Services
            // throw new NotImplementedException();
         }
 
-        public async Task<List<ArrangementInfoDTO>> GetGoTime()
+        //public async Task<List<ArrangementInfoDTO>> GetGoTime()
+        //{
+        //    return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+
+        //    //throw new NotImplementedException();
+        //}
+
+        //public async Task<List<ArrangementInfoDTO>> GetID()
+        //{
+        //    return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+
+        //    //throw new NotImplementedException();
+        //}
+
+        //public async Task<List<ArrangementInfoDTO>> GetRouteId()
+        //{
+        //    return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+
+        //    // throw new NotImplementedException();
+        //}
+
+        //public async Task<List<ArrangementInfoDTO>> GetStatus()
+        //{
+        //    return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+
+        //    // throw new NotImplementedException();
+        //}
+
+        //public async Task<List<ArrangementInfoDTO>> GetUserId()
+        //{
+        //    return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
+
+        //    // throw new NotImplementedException();
+        //}
+
+        public async Task<bool> Update(ArrangementInfoDTO model)
         {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
 
-            //throw new NotImplementedException();
-        }
-
-        public async Task<List<ArrangementInfoDTO>> GetID()
-        {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
-
-            //throw new NotImplementedException();
-        }
-
-        public async Task<List<ArrangementInfoDTO>> GetRouteId()
-        {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
-
-            // throw new NotImplementedException();
-        }
-
-        public async Task<List<ArrangementInfoDTO>> GetStatus()
-        {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
-
-            // throw new NotImplementedException();
-        }
-
-        public async Task<List<ArrangementInfoDTO>> GetUserId()
-        {
-            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).OrderByDescending(x => x.ArrangeDate).ToListAsync();
-
-            // throw new NotImplementedException();
-        }
-
-        public Task<bool> Update(ArrangementInfoDTO model)
-        {
+            var item = _mapper.Map<ArrangementInfo>(model);
+            item.UpdateAt = DateTime.Now;
+            _arrangementInfoRepository.Update(item);
+            return await _arrangementInfoRepository.SaveAll();
 
             throw new NotImplementedException();
         }

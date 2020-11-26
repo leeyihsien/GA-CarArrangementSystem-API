@@ -35,6 +35,8 @@ namespace GA_CarArrangementSystem_API.DTO
 
         public string ArrangementRemark { get; set; }
 
+        //public DateTime UpdateAt { get; set; }
+
         public ArrangementInfoDTO()
         {
             this.ArrangeDate = DateTime.Now;

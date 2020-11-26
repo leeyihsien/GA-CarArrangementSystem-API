@@ -35,9 +35,9 @@ namespace GA_CarArrangementSystem_API.Controllers
         }
         //   GET: api/ArrangementInfoes
         [HttpGet]
-        public async Task<IActionResult> GetID()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var model = await _arrangementInfoService.GetID();
+            var model = await _arrangementInfoService.GetAllAsync();
             return Ok(model);
         }
 

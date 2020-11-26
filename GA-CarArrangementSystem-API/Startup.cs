@@ -59,12 +59,19 @@ namespace GA_CarArrangementSystem_API
 
             // Service 
             services.AddScoped<IArrangementInfoService, ArrangementInfoService>();
+            services.AddScoped<ICarInfoService, CarInfoService>();
+            services.AddScoped<ICarDriverService, CarDriverService>();
+            services.AddScoped<IDriverInfoService, DriverInfoService>();
+            services.AddScoped<IRouteInfoService, RouteInfoService>();
            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options =>
+                options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

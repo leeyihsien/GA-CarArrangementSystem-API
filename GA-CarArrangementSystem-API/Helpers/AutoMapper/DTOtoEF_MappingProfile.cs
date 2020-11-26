@@ -17,6 +17,11 @@ namespace GA_CarArrangementSystem_API.Helpers.AutoMapper
         public DTOtoEF_MappingProfile()
         {
             CreateMap<ArrangementInfoDTO, ArrangementInfo>();
+            CreateMap<CarInfoDTO, CarInfo>();
+            CreateMap<DriverInfoDTO, DriverInfo>();
+            CreateMap<RouteInfoDTO, RouteInfo>();
+            CreateMap<CarDriverDTO, CarDriver>();
+
         }
     }
 }

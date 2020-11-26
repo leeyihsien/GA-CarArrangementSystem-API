@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace GA_CarArrangementSystem_API.Models
+namespace GA_CarArrangementSystem_API.DTO
 {
-    public class CarInfo
+    public class CarInfoDTO
     {
-        [Key]
         public string CarId { get; set; }
 
         public string CarBrand { get; set; }
@@ -18,7 +14,6 @@ namespace GA_CarArrangementSystem_API.Models
         public string CarOwner { get; set; }
 
         public int CarPassengerVolume { get; set; }
-
         public DateTime CreateAt { get; set; }
 
         public DateTime UpdateAt { get; set; }
