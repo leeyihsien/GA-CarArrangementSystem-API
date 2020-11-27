@@ -15,7 +15,7 @@ namespace GA_CarArrangementSystem_API.Models
         public string RouteName { get; set; }
         public string RouteStart { get; set; }
         public string RouteEnd { get; set; }
-        public int RouteCostTime { get; set; }
+        public double RouteCostTime { get; set; }
         public Boolean RouteOneWay { get; set; }
         public Boolean RouteRoundTrip { get; set; }
 

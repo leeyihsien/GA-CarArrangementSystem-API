@@ -57,8 +57,9 @@ namespace GA_CarArrangementSystem_API._Services.Services
         public CarDriverDTO GetById(object id)
         {
             return _mapper.Map<CarDriver, CarDriverDTO>(_carDriverRepository.FindById(id));
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
+
 
         public Task<bool> Update(CarDriverDTO model)
         {

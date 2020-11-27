@@ -19,12 +19,12 @@ namespace GA_CarArrangementSystem_API.Controllers
     [ApiController]
     public class CarDriversController : ControllerBase
     {
-        private readonly ICarInfoService _carInfoService;
+        private readonly ICarDriverService _carDriverService;
         private readonly DataContext  _context;
 
-        public CarDriversController(ICarInfoService carInfoService)
+        public CarDriversController(ICarDriverService carDriverService)
         {
-            _carInfoService = carInfoService;   
+            _carDriverService = carDriverService;
         }
 
         // GET: api/CarDrivers
@@ -32,87 +32,57 @@ namespace GA_CarArrangementSystem_API.Controllers
         public async Task<IActionResult> GetCarDriver()
         {
 
-            var model = await _carInfoService.GetAllAsync();
+            var model = await _carDriverService.GetAllAsync();
             return Ok(model);
         }
 
-        // GET: api/CarDrivers/5
+
         [HttpGet("{id}")]
-        public async Task<ActionResult<CarDriver>> GetCarDriver(int id)
+        public async Task<IActionResult> GetCarDriverById(string id)
         {
-            var carDriver = await _context.CarDriver.FindAsync(id);
-
-            if (carDriver == null)
-            {
-                return NotFound();
-            }
-
-            return carDriver;
+            var model = _carDriverService.GetById(id);
+            return Ok(model);
         }
 
-        // PUT: api/CarDrivers/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCarDriver(int id, CarDriver carDriver)
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> PostCarDriver(CarDriverDTO carDriverDTO)
         {
-            if (id != carDriver.Id)
+            var model = await _carDriverService.Add(carDriverDTO);
+            return Ok(model);
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutCarDriver(int id , CarDriverDTO carDriverDTO)
+        {
+
+            if (id != carDriverDTO.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(carDriver).State = EntityState.Modified;
-
-            try
+            else
             {
-                await _context.SaveChangesAsync();
+                var model = await _carDriverService.Update(carDriverDTO);
+                return Ok(model);
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CarDriverExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
-        // POST: api/CarDrivers
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<CarDriver>> PostCarDriver(CarDriver carDriver)
-        {
-            _context.CarDriver.Add(carDriver);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCarDriver", new { id = carDriver.Id }, carDriver);
-        }
-
-        // DELETE: api/CarDrivers/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<CarDriver>> DeleteCarDriver(int id)
+        public async Task<IActionResult> DeleteCarDriver(string id)
         {
-            var carDriver = await _context.CarDriver.FindAsync(id);
-            if (carDriver == null)
-            {
-                return NotFound();
-            }
-
-            _context.CarDriver.Remove(carDriver);
-            await _context.SaveChangesAsync();
-
-            return carDriver;
+            var model = await _carDriverService.Delete(id);
+            return Ok(model);
         }
 
-        private bool CarDriverExists(int id)
-        {
-            return _context.CarDriver.Any(e => e.Id == id);
-        }
+
+
+        //private bool CarDriverExists(int id)
+        //{
+        //    return _context.CarDriver.Any(e => e.Id == id);
+        //}
     }
 }

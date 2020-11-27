@@ -25,141 +25,67 @@ namespace GA_CarArrangementSystem_API.Controllers
     [ApiController]
     public class ArrangementInfoesController : ControllerBase
     {
-        private readonly IArrangementInfoService _arrangementInfoService;        
+        private readonly IArrangementInfoService _arrangementInfoService;
 
         public ArrangementInfoesController(IArrangementInfoService arrangementInfoService)
         {
 
             _arrangementInfoService = arrangementInfoService;
-            
+
         }
         //   GET: api/ArrangementInfoes
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetArrangmentInfo()
         {
             var model = await _arrangementInfoService.GetAllAsync();
             return Ok(model);
         }
 
-    //   GET: api/ArrangementInfoes
-       //[HttpGet]
-       //public async Task<ActionResult<IEnumerable<ArrangementInfoDTO>>> GetArrangmentInfo()
-       // {
-       //    return await _arrangementInfoService.ArrangementInfo.Select(x => ArrangementInfoToDTO(x)).ToListAsync();
-       // }
+        //   GET: api/ArrangementInfoes/id
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetArrangmentInfoById(string id)
+        {
+            var model = _arrangementInfoService.GetById(id);
+            return Ok(model);
+        }
 
-        // GET: api/ArrangementInfoes/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<ArrangementInfoDTO>> GetArrangementInfo(string id)
-        //{
-        //    var arrangementInfo = await _arrangementInfoService.ArrangementInfo.FindAsync(id);
+        //   POST: api/ArrangementInfoes
 
-        //    if (arrangementInfo == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        public async Task<IActionResult> PostArrangementInfo(ArrangementInfoDTO arrangementInfo)
+        {
+            var model = await _arrangementInfoService.Add(arrangementInfo);
+            return Ok(model);
+        }
 
-        //    return ArrangementInfoToDTO(arrangementInfo);
-        //}
 
-        // PUT: api/ArrangementInfoes/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutArrangementInfo(string id, ArrangementInfoDTO arrangementInfoDTO)
-        //{
-        //    if (id != arrangementInfoDTO.ArrangementId)
-        //    {
-        //        return BadRequest();
-        //    }
+        //   PUT: api/ArrangementInfoes/id
 
-        //    _arrangementInfoService.Entry(arrangementInfoDTO).State = EntityState.Modified;
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutArrangementInfo(string id, ArrangementInfoDTO arrangementInfo)
+        {
+           if (id != arrangementInfo.ArrangementId)
+            {
+                return BadRequest();
+            } 
+           else
+            {
+                var model = await _arrangementInfoService.Update(arrangementInfo);
+                return Ok(model);
+            }
+            
+        }
 
-        //    try
-        //    {
-        //        await _arrangementInfoService.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ArrangementInfoExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
 
-        //    return NoContent();
-        //}
+        //Delete:　api/ArrangementInfoes/{id}
 
-        // POST: api/ArrangementInfoes
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<ArrangementInfoDTO>> PostArrangementInfo(ArrangementInfoDTO arrangementInfoDTO)
-        //{
-        //    var arrangementInfo = new ArrangementInfo
-        //    {
-        //        ArrangementId = arrangementInfoDTO.ArrangementId,
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteArrangement(string id)
+        {
+            var model = await _arrangementInfoService.Delete(id);
+            return Ok(model);
 
-        //        ArrangeDate = arrangementInfoDTO.ArrangeDate,
-
-        //        UserId = arrangementInfoDTO.UserId,
-
-        //        UserName = arrangementInfoDTO.UserName,
-
-        //        RouteId = arrangementInfoDTO.RouteId,
-
-        //        GoTime = arrangementInfoDTO.GoTime,
-
-        //        BackTime = arrangementInfoDTO.BackTime,
-
-        //        CarId = arrangementInfoDTO.CarId,
-
-        //        DriverId = arrangementInfoDTO.DriverId
-        //    };
-        //    _arrangementInfoService.ArrangementInfo.Add(arrangementInfo);
-        //    try
-        //    {
-        //        await _arrangementInfoService.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (ArrangementInfoExists(arrangementInfo.ArrangementId))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtAction("GetArrangementInfo", new { id = arrangementInfo.ArrangementId }, ArrangementInfoToDTO(arrangementInfo));
-        //}
-
-        // DELETE: api/ArrangementInfoes/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<ArrangementInfo>> DeleteArrangementInfo(string id)
-        //{
-        //    var arrangementInfo = await _context.ArrangementInfo.FindAsync(id);
-        //    if (arrangementInfo == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.ArrangementInfo.Remove(arrangementInfo);
-        //    await _context.SaveChangesAsync();
-
-        //    return arrangementInfo;
-        //}
-
-        //private bool ArrangementInfoExists(string id)
-        //{
-        //    return _context.ArrangementInfo.Any(e => e.ArrangementId == id);
-        //}
+        }
 
 
         /// <summary>

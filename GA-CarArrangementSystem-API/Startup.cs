@@ -38,7 +38,11 @@ namespace GA_CarArrangementSystem_API
             services.AddCors();
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
-            services.AddControllers();
+            services.AddControllers()
+            .AddNewtonsoftJson(options =>
+              options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
 
             //register automapper 
             services.AddAutoMapper(typeof(Startup));
