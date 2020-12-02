@@ -31,6 +31,7 @@ namespace GA_CarArrangementSystem_API._Services.Services
         {
             var item = _mapper.Map<RouteInfo>(model);
             _routeInfoRepository.Add(item);
+            item.CreateAt = DateTime.Now;
             return await _routeInfoRepository.SaveAll();
             throw new NotImplementedException();
         }

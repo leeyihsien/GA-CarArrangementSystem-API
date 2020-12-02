@@ -20,7 +20,6 @@ namespace GA_CarArrangementSystem_API.Controllers
     public class CarDriversController : ControllerBase
     {
         private readonly ICarDriverService _carDriverService;
-        private readonly DataContext  _context;
 
         public CarDriversController(ICarDriverService carDriverService)
         {
@@ -55,19 +54,12 @@ namespace GA_CarArrangementSystem_API.Controllers
         }
 
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCarDriver(int id , CarDriverDTO carDriverDTO)
+        [HttpPut]
+        public async Task<IActionResult> PutCarDriver( CarDriverDTO carDriverDTO)
         {
-
-            if (id != carDriverDTO.Id)
-            {
-                return BadRequest();
-            }
-            else
-            {
                 var model = await _carDriverService.Update(carDriverDTO);
                 return Ok(model);
-            }
+       
         }
 
 

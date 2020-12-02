@@ -11,6 +11,8 @@ namespace GA_CarArrangementSystem_API.Models
     public class DriverInfo
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public string DriverId { get; set; }
         public string DriverName { get; set; }
         public string DriverPhone { get; set; }

@@ -35,6 +35,7 @@ namespace GA_CarArrangementSystem_API._Services.Services
         public async Task<bool> Add(CarDriverDTO model)
         {
             var item = _mapper.Map<CarDriver>(model);
+            item.CreateAt = DateTime.Now;
             _carDriverRepository.Add(item);
             return await _carDriverRepository.SaveAll();
             throw new NotImplementedException();

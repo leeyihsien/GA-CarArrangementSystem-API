@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using GA_CarArrangementSystem_API.Data;
 using GA_CarArrangementSystem_API.DTO;
 using GA_CarArrangementSystem_API._Repositories.Interface;
@@ -90,6 +92,13 @@ namespace GA_CarArrangementSystem_API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "Image")),
+                RequestPath = "/Image"
             });
         }
     }

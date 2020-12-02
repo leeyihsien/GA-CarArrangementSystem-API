@@ -52,18 +52,11 @@ namespace GA_CarArrangementSystem_API.Controllers
 
 
         // PUT: api/RouteInfoes/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRouteInfo(string id, RouteInfoDTO routeInfoDTO)
+        [HttpPut]
+        public async Task<IActionResult> PutRouteInfo(RouteInfoDTO routeInfoDTO)
         {
-            if (id != routeInfoDTO.RouteId)
-            {
-                return BadRequest();
-            }
-            else
-            {
                 var model = await _routeInfoService.Update(routeInfoDTO);
                 return Ok(model);
-            }
         }
 
         // DELETE: api/RouteInfoes/5

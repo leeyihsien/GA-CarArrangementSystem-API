@@ -11,8 +11,6 @@ namespace GA_CarArrangementSystem_API.DTO
         public string DriverName { get; set; }
         public string DriverPhone { get; set; }
         public string DriverPhoto { get; set; }
-        public DateTime CreateAt { get; set; }
-
-        public DateTime UpdateAt { get; set; }
+       
     }
 }

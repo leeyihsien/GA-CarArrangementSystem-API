@@ -11,13 +11,13 @@ namespace GA_CarArrangementSystem_API.Models
     public class RouteInfo
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string RouteId { get; set; }
         public string RouteName { get; set; }
         public string RouteStart { get; set; }
         public string RouteEnd { get; set; }
         public double RouteCostTime { get; set; }
-        public Boolean RouteOneWay { get; set; }
-        public Boolean RouteRoundTrip { get; set; }
+        public string RouteType { get; set; }
 
         public string RouteRemark { get; set; }
 

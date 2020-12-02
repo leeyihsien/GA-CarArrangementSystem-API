@@ -20,12 +20,10 @@ namespace GA_CarArrangementSystem_API.Controllers
     public class CarInfoesController : ControllerBase
     {
         private readonly ICarInfoService _carInfoService;
-        private readonly DataContext _context;
 
-        public CarInfoesController(ICarInfoService carInfoService,DataContext context)
+        public CarInfoesController(ICarInfoService carInfoService)
         {
             _carInfoService = carInfoService;
-            _context = context;
         }
 
         // GET: api/CarInfoes
@@ -57,18 +55,12 @@ namespace GA_CarArrangementSystem_API.Controllers
 
 
         // PUT: api/CarInfoes/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCarInfo(string id, CarInfoDTO carInfoDTO)
+        [HttpPut]
+        public async Task<IActionResult> PutCarInfo(CarInfoDTO carInfoDTO)
         {
-            if (id != carInfoDTO.CarId)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                var model = await _carInfoService.Update(carInfoDTO);
+               var model = await _carInfoService.Update(carInfoDTO);
                 return Ok(model);
-            }
+            
         }
 
 

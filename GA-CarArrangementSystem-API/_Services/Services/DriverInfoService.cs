@@ -31,6 +31,7 @@ namespace GA_CarArrangementSystem_API._Services.Services
         public async Task<bool> Add(DriverInfoDTO model)
         {
             var item = _mapper.Map<DriverInfo>(model);
+            item.CreateAt = DateTime.Now;
             _driverInfoRepository.Add(item);
             return await _driverInfoRepository.SaveAll();
 
@@ -61,6 +62,7 @@ namespace GA_CarArrangementSystem_API._Services.Services
         {
             var item = _mapper.Map<DriverInfo>(model);
             item.UpdateAt = DateTime.Now;
+            _driverInfoRepository.Update(item);
             return await _driverInfoRepository.SaveAll();
             throw new NotImplementedException();
         }

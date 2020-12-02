@@ -12,6 +12,8 @@ using GA_CarArrangementSystem_API._Repositories.Interface;
 using GA_CarArrangementSystem_API._Repositories.Repositories;
 using GA_CarArrangementSystem_API._Services.Interface;
 using GA_CarArrangementSystem_API._Services.Services;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace GA_CarArrangementSystem_API.Controllers
 {
@@ -20,12 +22,12 @@ namespace GA_CarArrangementSystem_API.Controllers
     public class DriverInfoesController : ControllerBase
     {
         private readonly IDriverInfoService _driverInfoService;
-        private readonly DataContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public DriverInfoesController(IDriverInfoService driverInfoService,DataContext context)
+        public DriverInfoesController(IDriverInfoService driverInfoService, IWebHostEnvironment webHostEnvironment)
         {
             _driverInfoService = driverInfoService;
-            _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/DriverInfoes
@@ -55,19 +57,11 @@ namespace GA_CarArrangementSystem_API.Controllers
         }
 
         // PUT: api/DriverInfoes/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDriverInfo(string id, DriverInfoDTO driverInfoDTO)
+        [HttpPut]
+        public async Task<IActionResult> PutDriverInfo(DriverInfoDTO driverInfoDTO)
         {
-
-            if (id != driverInfoDTO.DriverId)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                var model = _driverInfoService.Update(driverInfoDTO);
+                var model = await _driverInfoService.Update(driverInfoDTO);
                 return Ok(model);
-            }
         }
 
         // DELETE: api/DriverInfoes/5
@@ -76,6 +70,32 @@ namespace GA_CarArrangementSystem_API.Controllers
         {
             var model = await _driverInfoService.Delete(id);
             return Ok(model);
+        }
+
+
+        [Route("SaveFile")]
+        [HttpPost]
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string filename = postedFile.FileName;
+                var physicalPath = _webHostEnvironment.ContentRootPath + "/Image/" + filename;
+
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+
+                return new JsonResult(filename);
+            }
+
+            catch (Exception)
+            {
+                return new JsonResult("anonymous.png");
+            }
         }
 
     }

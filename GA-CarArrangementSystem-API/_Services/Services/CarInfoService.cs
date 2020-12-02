@@ -32,6 +32,7 @@ namespace GA_CarArrangementSystem_API._Services.Services
         public async Task<bool> Add(CarInfoDTO model)
         {
             var item = _mapper.Map<CarInfo>(model);
+            item.CreateAt = DateTime.Now;
             _carInfoRepository.Add(item);
             return await _carInfoRepository.SaveAll();
             throw new NotImplementedException();
