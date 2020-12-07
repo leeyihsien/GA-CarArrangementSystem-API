@@ -15,17 +15,15 @@ namespace GA_CarArrangementSystem_API.DTO
 
         public string ArrangementId { get; set; }
 
-        public DateTime ArrangeDate { get; set; }
-
         public string UserId { get; set; }
 
         public string UserName { get; set; }
 
+        public string UserPhone { get; set; }
+
         public string RouteId { get; set; }
 
-        public DateTime GoTime { get; set; }
-
-        public DateTime BackTime { get; set; }
+        public DateTime DepartureTime { get; set; }
 
         public string CarId { get; set; }
 
@@ -35,11 +33,13 @@ namespace GA_CarArrangementSystem_API.DTO
 
         public string ArrangementRemark { get; set; }
 
-        //public DateTime UpdateAt { get; set; }
+        public DateTime CreateAt { get; set; }
+
+        public DateTime UpdateAt { get; set; }
 
         public ArrangementInfoDTO()
         {
-            this.ArrangeDate = DateTime.Now;
+            this.CreateAt = DateTime.Now;
         }
     }
 }

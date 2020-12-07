@@ -14,8 +14,8 @@ namespace GA_CarArrangementSystem_API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string RouteId { get; set; }
         public string RouteName { get; set; }
-        public string RouteStart { get; set; }
-        public string RouteEnd { get; set; }
+        public string RouteStartingStation { get; set; }
+        public string RouteTerminalStation { get; set; }
         public double RouteCostTime { get; set; }
         public string RouteType { get; set; }
 
