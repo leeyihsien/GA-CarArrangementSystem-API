@@ -11,6 +11,8 @@ using GA_CarArrangementSystem_API.DTO;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper.QueryableExtensions;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 /// <summary>
 /// 實作服務介面
@@ -32,14 +34,15 @@ namespace GA_CarArrangementSystem_API._Services.Services
             _mapperConfiguration = mapperConfiguration;
             _mapper = mapper;
             _arrangementInfoRepository = arrangementInfoRepository;
-            
-            
+
+
         }
 
         public async Task<bool> Add(ArrangementInfoDTO model)
         {
             var item = _mapper.Map<ArrangementInfo>(model);
             item.CreateAt = DateTime.Now;
+            item.ArrangementId = GetMaxSerialNo();
             _arrangementInfoRepository.Add(item);
             return await _arrangementInfoRepository.SaveAll();
         }
@@ -78,5 +81,43 @@ namespace GA_CarArrangementSystem_API._Services.Services
             return _mapper.Map<ArrangementInfo, ArrangementInfoDTO>(_arrangementInfoRepository.FindById(id));
             throw new NotImplementedException();
         }
+
+
+
+        //流水號生成
+        public string GetMaxSerialNo()
+        {
+            SqlConnection sqlConnection = new SqlConnection("Server=10.4.0.34;Database=GA_Test;MultipleActiveResultSets=true;User Id=sa;Password=shc@123");
+            SqlCommand sqlCommand = new SqlCommand("Select Max(arrangementId)  FROM ArrangementInfo", sqlConnection);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+            DataTable dtSerialNo = new DataTable();
+            dataAdapter.Fill(dtSerialNo);
+            string date = DateTime.Now.ToString("yyyy" + "MM");
+            string str = dtSerialNo.Rows[0][0].ToString();
+
+
+                string maxDate = str.Substring(2, 6);//得到订单编号最大值的“年月”部分(201906)
+                string maxDateNo = str.Substring(8, 4);//得到订单编号最大值的序列部分，也就是“-”之后的三个数字（002）
+                if (date == maxDate)//如果本月有数据
+                {
+                    int.TryParse(maxDateNo, out int dd);//将订单编号的序列部分转换为 int 类型，以便进行“+1”运算
+                    int newDateNo = dd + 1;
+                    str = "AR" + date + newDateNo.ToString("0000");
+                }
+                else
+                {
+                    str = "AR" + date + "0001";// “-”和 “001” 分开写会更清晰些
+                }
+
+           
+           
+
+
+            return str;
+
+        }
+
+        
+
+       }
     }
-}

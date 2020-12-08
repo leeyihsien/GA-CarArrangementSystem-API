@@ -50,9 +50,17 @@ namespace GA_CarArrangementSystem_API._Services.Services
             throw new NotImplementedException();
         }
 
+
+
         public RouteInfoDTO GetById(object id)
         {
             return _mapper.Map<RouteInfo, RouteInfoDTO>(_routeInfoRepository.FindById(id));
+            throw new NotImplementedException();
+        }
+
+        public async Task<List<RouteInfoDTO>> GetIdByType(object type)
+        {
+            return await _routeInfoRepository.FindAll().ProjectTo<RouteInfoDTO>(_mapperConfiguration).Where(x => x.RouteType == type).ToListAsync();
             throw new NotImplementedException();
         }
 

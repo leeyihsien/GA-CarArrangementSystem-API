@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 using GA_CarArrangementSystem_API.Data;
 using GA_CarArrangementSystem_API.Models;
@@ -39,6 +40,14 @@ namespace GA_CarArrangementSystem_API.Controllers
         public async Task<IActionResult> GetRouteInfoById(string id)
         {
             var model = _routeInfoService.GetById(id);
+            return Ok(model);
+        }
+
+        [HttpGet("type/{type}", Name = "GetType")]
+
+        public async Task<IActionResult> GetType(string type)
+        {
+            var model = await _routeInfoService.GetIdByType(type);
             return Ok(model);
         }
 

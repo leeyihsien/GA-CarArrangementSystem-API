@@ -17,5 +17,8 @@ namespace GA_CarArrangementSystem_API._Repositories.Repositories
         {
             dataContext = context;
         }
+
+
+       
     }
 }

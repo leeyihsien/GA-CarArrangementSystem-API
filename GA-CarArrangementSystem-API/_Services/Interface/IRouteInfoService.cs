@@ -8,5 +8,7 @@ namespace GA_CarArrangementSystem_API._Services.Interface
 {
     public interface IRouteInfoService : IGeneralService<RouteInfoDTO>
     {
+        Task<List<RouteInfoDTO>> GetIdByType(object type);
+
     }
 }

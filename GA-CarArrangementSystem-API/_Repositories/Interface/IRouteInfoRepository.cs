@@ -8,5 +8,6 @@ namespace GA_CarArrangementSystem_API._Repositories.Interface
 {
     public interface IRouteInfoRepository : IGeneralRepository<RouteInfo>
     {
+       
     }
 }
