@@ -49,6 +49,13 @@ namespace GA_CarArrangementSystem_API.Controllers
             return Ok(model);
         }
 
+        [HttpGet("status/", Name = "GetNullStatus")]
+        public async Task<IActionResult> GetNullStatus()
+        {
+            var model = await _arrangementInfoService.GetNullStatus();
+            return Ok(model);
+        }
+
         //   POST: api/ArrangementInfoes
 
         [HttpPost]

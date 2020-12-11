@@ -117,7 +117,12 @@ namespace GA_CarArrangementSystem_API._Services.Services
 
         }
 
-        
+        public async Task<List<ArrangementInfoDTO>> GetNullStatus()
+        {
+            return await _arrangementInfoRepository.FindAll().ProjectTo<ArrangementInfoDTO>(_mapperConfiguration).Where(x => x.ArrangementStatus == null || x.ArrangementStatus == "").ToListAsync();
+            throw new NotImplementedException();
+        }
 
-       }
+    
+    }
     }

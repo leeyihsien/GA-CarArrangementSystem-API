@@ -14,7 +14,7 @@ namespace GA_CarArrangementSystem_API._Services.Interface
 {
     public interface IArrangementInfoService : IGeneralService<ArrangementInfoDTO>
     {
-   
+        Task<List<ArrangementInfoDTO>> GetNullStatus();
 
     }
 }
