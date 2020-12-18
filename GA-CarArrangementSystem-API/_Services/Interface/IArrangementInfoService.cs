@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GA_CarArrangementSystem_API.DTO;
+using GA_CarArrangementSystem_API.ViewModels;
 
 
 /// <summary>
@@ -15,6 +16,11 @@ namespace GA_CarArrangementSystem_API._Services.Interface
     public interface IArrangementInfoService : IGeneralService<ArrangementInfoDTO>
     {
         Task<List<ArrangementInfoDTO>> GetNullStatus();
+
+        Task<List<ArrangementInfoDTO>> GetByDate(String date);
+
+        Task<List<PassengerSearchViewModel>> PassengerSearch(String userId, String date);
+
 
     }
 }

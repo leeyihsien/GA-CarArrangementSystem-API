@@ -56,6 +56,21 @@ namespace GA_CarArrangementSystem_API.Controllers
             return Ok(model);
         }
 
+
+        [HttpGet("searchdate/{date}", Name = "GetByDate")]
+        public async Task<IActionResult> GetByDate(string date)
+        {
+            var model = await _arrangementInfoService.GetByDate(date);
+            return Ok(model);
+        }
+
+        [HttpGet("PassengerSearch/{userId}/{date}", Name = "PassengerSearch")]
+        public async Task<IActionResult> PassengerSearch(string userId, string date)
+        {
+            var model = await _arrangementInfoService.PassengerSearch(userId,date);
+            return Ok(model);
+        }
+
         //   POST: api/ArrangementInfoes
 
         [HttpPost]
@@ -68,18 +83,13 @@ namespace GA_CarArrangementSystem_API.Controllers
 
         //   PUT: api/ArrangementInfoes/id
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutArrangementInfo(string id, ArrangementInfoDTO arrangementInfo)
+        [HttpPut]
+        public async Task<IActionResult> PutArrangementInfo(ArrangementInfoDTO arrangementInfo)
         {
-           if (id != arrangementInfo.ArrangementId)
-            {
-                return BadRequest();
-            } 
-           else
-            {
+           
                 var model = await _arrangementInfoService.Update(arrangementInfo);
                 return Ok(model);
-            }
+            
             
         }
 
