@@ -19,7 +19,11 @@ namespace GA_CarArrangementSystem_API._Services.Interface
 
         Task<List<ArrangementInfoDTO>> GetByDate(String date);
 
-        Task<List<PassengerSearchViewModel>> PassengerSearch(String userId, String date);
+        Task<List<ArrangementInfoDTO>> PassengerSearch(String userId, String date);
+
+        Task<List<ArrangementInfoDTO>> DriverSearch(String carId, String date);
+
+        Task<List<ArrangementInfoDTO>> ManagerSearch(String routeId, String date);
 
 
     }

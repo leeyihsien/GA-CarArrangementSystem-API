@@ -64,12 +64,36 @@ namespace GA_CarArrangementSystem_API.Controllers
             return Ok(model);
         }
 
+
+
+
         [HttpGet("PassengerSearch/{userId}/{date}", Name = "PassengerSearch")]
         public async Task<IActionResult> PassengerSearch(string userId, string date)
         {
             var model = await _arrangementInfoService.PassengerSearch(userId,date);
             return Ok(model);
         }
+
+
+
+        [HttpGet("DriverSearch/{carId}/{date}", Name = " DriverSearch")]
+        public async Task<IActionResult> DriverSearch(string carId, string date)
+        {
+            var model = await _arrangementInfoService.DriverSearch(carId, date);
+            return Ok(model);
+        }
+
+
+
+        [HttpGet("ManagerSearch/{routeId}/{date}", Name = "ManagerSearch")]
+        public async Task<IActionResult> ManagerSearch(string routeId, string date)
+        {
+            var model = await _arrangementInfoService.ManagerSearch(routeId, date);
+            return Ok(model);
+        }
+
+
+
 
         //   POST: api/ArrangementInfoes
 
