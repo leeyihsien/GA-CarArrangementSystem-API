@@ -50,6 +50,21 @@
           "lib/netstandard2.1/LinqKit.Core.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.5.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Cors/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2992,6 +3007,20 @@
         "lib/uap10.0.10240/LinqKit.Core.xml",
         "linqkit.core.1.1.21.nupkg.sha512",
         "linqkit.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.0": {
+      "sha512": "Ui/tHIXkUa2daOeHKoHSRE8r0U/i9ar0wAeeUPt3ILidsrXVcq4A7wX9g6AJjVBW6Va0Elw1/JNtyrk+wz5pSg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
+        "microsoft.aspnetcore.authentication.jwtbearer.3.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cors/2.2.0": {
@@ -9252,6 +9281,7 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.0",
       "DocumentFormat.OpenXml >= 2.11.3",
       "LinqKit.Core >= 1.1.21",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.0",
       "Microsoft.AspNetCore.Cors >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.10",
       "Microsoft.EntityFrameworkCore >= 3.1.10",
@@ -9263,24 +9293,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\eddy.lee\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Yi Hsien Lee\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
+      "projectUniqueName": "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
       "projectName": "GA-CarArrangementSystem-API",
-      "projectPath": "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
-      "packagesPath": "C:\\Users\\eddy.lee\\.nuget\\packages\\",
-      "outputPath": "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\obj\\",
+      "projectPath": "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
+      "packagesPath": "C:\\Users\\Yi Hsien Lee\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\eddy.lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Yi Hsien Lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9291,7 +9322,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -9303,7 +9333,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
@@ -9320,6 +9349,10 @@
           "LinqKit.Core": {
             "target": "Package",
             "version": "[1.1.21, )"
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[3.1.0, )"
           },
           "Microsoft.AspNetCore.Cors": {
             "target": "Package",
@@ -9376,7 +9409,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj": {}
+    "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj": {}
   },
   "projects": {
-    "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj": {
+    "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
+        "projectUniqueName": "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
         "projectName": "GA-CarArrangementSystem-API",
-        "projectPath": "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
-        "packagesPath": "C:\\Users\\eddy.lee\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\obj\\",
+        "projectPath": "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API.csproj",
+        "packagesPath": "C:\\Users\\Yi Hsien Lee\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yi Hsien Lee\\GA-CarArrangementSystem\\GA-CarArrangementSystem-API\\GA-CarArrangementSystem-API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\eddy.lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Yi Hsien Lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -29,7 +30,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -41,7 +41,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -58,6 +57,10 @@
             "LinqKit.Core": {
               "target": "Package",
               "version": "[1.1.21, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             },
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",
@@ -114,7 +117,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

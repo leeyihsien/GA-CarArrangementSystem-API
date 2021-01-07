@@ -9,11 +9,11 @@ using GA_CarArrangementSystem_API._Repositories.Interface;
 
 namespace GA_CarArrangementSystem_API._Repositories.Repositories
 {
-    public class CarDriverRepository : GeneralRepository<CarDriver>, ICarDriverRepository
+    public class RouteScheduleRepository : GeneralRepository<RouteSchedule>, IRouteScheduleRepository
     {
         private readonly DataContext dataContext;
 
-        public CarDriverRepository(DataContext context) : base(context)
+        public RouteScheduleRepository(DataContext context) : base(context)
         {
             dataContext = context;
         }

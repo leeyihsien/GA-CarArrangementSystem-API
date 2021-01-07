@@ -24,8 +24,12 @@ namespace GA_CarArrangementSystem_API.Helpers.AutoMapper
             CreateMap<CarInfo, CarInfoDTO>();
             CreateMap<RouteInfo, RouteInfoDTO>();
             CreateMap<DriverInfo, DriverInfoDTO>();
-            CreateMap<CarDriver, CarDriverDTO>();
+            CreateMap<UserAcc, UserAccDTO>();
+            CreateMap<GARole, GARoleDTO>();
+            CreateMap<RouteSchedule, RouteScheduleDTO>();
+
+
         }
-        
+
     }
 }

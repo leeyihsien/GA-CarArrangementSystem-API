@@ -19,7 +19,8 @@ namespace GA_CarArrangementSystem_API.Data
         public DbSet<DriverInfo> DriverInfo { get; set; }
         public DbSet<RouteInfo> RouteInfo { get; set; }
 
-        public DbSet<CarDriver> CarDriver { get; set; }
+        public DbSet<RouteSchedule> RouteSchedule { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

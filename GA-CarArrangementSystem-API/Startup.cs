@@ -16,12 +16,17 @@ using Microsoft.Extensions.FileProviders;
 using GA_CarArrangementSystem_API.Data;
 using GA_CarArrangementSystem_API.DTO;
 using GA_CarArrangementSystem_API._Repositories.Interface;
+using GA_CarArrangementSystem_API._Repositories.Interface.DbUser;
 using GA_CarArrangementSystem_API._Repositories.Repositories;
+using GA_CarArrangementSystem_API._Repositories.Repositories.DbUser;
 using GA_CarArrangementSystem_API._Services.Interface;
 using GA_CarArrangementSystem_API._Services.Services;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using AutoMapper;
 using GA_CarArrangementSystem_API.Helpers.AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace GA_CarArrangementSystem_API
 {
@@ -39,7 +44,8 @@ namespace GA_CarArrangementSystem_API
         {
             services.AddCors();
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+            services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+
             services.AddControllers()
             .AddNewtonsoftJson(options =>
               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -52,7 +58,19 @@ namespace GA_CarArrangementSystem_API
                 return new Mapper(AutoMapperConfig.RegisterMappings());
             });
             services.AddSingleton(AutoMapperConfig.RegisterMappings());
-
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+           .AddJwtBearer(options => {
+               options.RequireHttpsMetadata = false;
+               options.SaveToken = true;
+               options.TokenValidationParameters = new TokenValidationParameters
+               {
+                   ValidateIssuerSigningKey = true,
+                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+                   .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                   ValidateIssuer = false,
+                   ValidateAudience = false
+               };
+           });
 
 
             //Repository DI
@@ -60,15 +78,19 @@ namespace GA_CarArrangementSystem_API
             services.AddScoped<ICarInfoRepository, CarInfoRepository>();
             services.AddScoped<IRouteInfoRepository, RouteInfoRepository>();
             services.AddScoped<IDriverInfoRepository, DriverInfoRepository>();
-            services.AddScoped<ICarDriverRepository, CarDriverRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleUserRepository, RoleUserRepository>();
+            services.AddScoped<IRouteScheduleRepository, RouteScheduleRepository>();
 
 
             // Service 
             services.AddScoped<IArrangementInfoService, ArrangementInfoService>();
             services.AddScoped<ICarInfoService, CarInfoService>();
-            services.AddScoped<ICarDriverService, CarDriverService>();
             services.AddScoped<IDriverInfoService, DriverInfoService>();
             services.AddScoped<IRouteInfoService, RouteInfoService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRouteScheduleService, RouteScheduleService>();
            
         }
 
@@ -87,6 +109,7 @@ namespace GA_CarArrangementSystem_API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
